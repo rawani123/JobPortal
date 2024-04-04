@@ -6,7 +6,7 @@ class SignupPage extends StatelessWidget {
   SignupPage({Key? key}) : super(key: key);
 
   final Dio _dio = Dio();
-  static const String baseUrl = 'http://localhost:3000/';
+  static const String baseUrl = 'http://10.0.2.2:3000/api/users/';
 
   Future<void> _signUp(BuildContext context, String username, String email,
       String password) async {
@@ -22,13 +22,18 @@ class SignupPage extends StatelessWidget {
 
       // Check if the signup was successful
       if (response.statusCode == 201) {
-        // Show success message or navigate to the next screen
+        // Show success message
         print('Signup successful: ${response.data}');
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text('Signup successful'),
             backgroundColor: Colors.green,
           ),
+        );
+        // Redirect to login page
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => LoginPage()),
         );
       } else {
         // Show error message
