@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/blog_page.dart';
 import 'package:flutter_application_1/pages/login_page.dart'; // Import your LoginPage widget
 import 'package:flutter_application_1/pages/register_page.dart'; // Import your SignupPage widget
+import 'package:flutter_application_1/pages/BlogApi.dart';
 
 void main() {
   runApp(MyApp());
@@ -16,7 +17,8 @@ class MyApp extends StatelessWidget {
       routes: {
         '/login': (context) => LoginPage(), // Define the route for the LoginPage
         '/signup': (context) => SignupPage(), // Define the route for the SignupPage
-        '/blog': (context) => BlogPage(), // Define the route for the BlogPage
+        '/blog': (context) => BlogPage(),
+        '/job': (context) => JobSearchPage() // Define the route for the BlogPage
       },
     );
   }

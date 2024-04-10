@@ -31,8 +31,8 @@ class _LoginPageState extends State<LoginPage> {
         // Login successful
         print('Login successful: ${response.data}');
 
-        // Navigate to the blog page
-        Navigator.pushNamed(context, '/blog'); // Replace '/blog' with your actual route for the blog page
+        // Navigate to the job page
+        Navigator.pushNamed(context, '/job');
       } else {
         // Login failed
         print('Login failed: ${response.data}');
@@ -54,6 +54,7 @@ class _LoginPageState extends State<LoginPage> {
       );
     }
   }
+
 
   @override
   Widget build(BuildContext context) {

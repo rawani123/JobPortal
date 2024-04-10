@@ -1,6 +1,7 @@
 // controllers/userController.js
 const bcrypt = require('bcrypt');
 const User = require('../models/user.model');
+const axios = require('axios');
 
 exports.registerUser = async (req, res) => {
   try {
@@ -67,3 +68,27 @@ exports.loginUser = async (req, res) => {
     res.status(500).json({ error: 'Internal server error' });
   }
 };
+
+exports.webScrapoping = async (req,res )=>{
+ const options = {
+    method: 'GET',
+    url: 'https://linkedin-data-scraper.p.rapidapi.com/search_jobs',
+    params: {
+      query: 'Software developer',
+      location: 'India',
+      page: '1'
+    },
+    headers: {
+      'X-RapidAPI-Key': '7a58a188a3mshfabb492a690ceedp1bd3e8jsnc244c871b93b',
+      'X-RapidAPI-Host': 'linkedin-data-scraper.p.rapidapi.com'
+    }
+  };
+
+  try {
+    const response = await axios.request(options);
+    console.log("Called APi")
+    res.json(response.data); // Send the job search results as response
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }}
